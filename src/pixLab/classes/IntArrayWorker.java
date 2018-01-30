@@ -31,6 +31,7 @@ public class IntArrayWorker
 				total = total + matrix[row][col];
 			}
 		}
+		
 		return total;
 	}
 
@@ -49,6 +50,7 @@ public class IntArrayWorker
 				total = total + item;
 			}
 		}
+		
 		return total;
 	}
 
@@ -80,8 +82,10 @@ public class IntArrayWorker
 			{
 				System.out.print(matrix[row][col] + " ");
 			}
+			
 			System.out.println();
 		}
+		
 		System.out.println();
 	}
 

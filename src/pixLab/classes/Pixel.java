@@ -365,5 +365,16 @@ public class Pixel
       " green=" + getGreen() + 
       " blue=" + getBlue();
   }
-
+  
+  public boolean isTransparent()
+  {
+	  boolean transparency = false;
+	  
+	  if(getAlpha() == 0 && getRed() == 0 && getGreen() == 0 && getBlue() == 0)
+	  {
+		  transparency = true;
+	  }
+	  
+	  return transparency;
+  }
 }
