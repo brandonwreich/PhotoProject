@@ -47,14 +47,15 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
+    Picture swan = new Picture("barbaraS.jpg");
+    swan.explore();
     swan.edgeDetection(10);
     swan.explore();
   }
   
   public static void testMirrorHorziontalBottomToTop()
   {
-	  Picture lake = new Picture("space.jpg");
+	  Picture lake = new Picture("lakeReflection.jpg");
 	  lake.mirrorHorzontalBottomToTop();
 	  lake.explore();
   }
@@ -62,7 +63,15 @@ public class PictureTester
   public static void testGeorgeConstanzaFilter()
   {
 	  Picture space = new Picture("space.jpg");
-	  space.geogenConstanzaFilter(233, 875);
+	  space.georgeConstanzaFilter(233, 875);
+	  space.explore();
+  }
+  
+  public static void testMirrorEveryOtherPixel()
+  {
+	  Picture space = new Picture("space.jpg");
+	  space.explore();
+	  space.mirrorEveryOtherPixel("vertical", 2);
 	  space.explore();
   }
   
@@ -73,7 +82,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-   // testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -95,7 +104,8 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-    testMirrorHorziontalBottomToTop();
-    testGeorgeConstanzaFilter();
+    //testMirrorHorziontalBottomToTop();
+    //testGeorgeConstanzaFilter();
+	//testMirrorEveryOtherPixel();
   }
 }
