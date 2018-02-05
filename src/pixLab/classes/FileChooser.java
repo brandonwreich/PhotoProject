@@ -7,8 +7,8 @@ import java.io.*;
 import java.net.*;
 
 /**
- * A class to make working with a file chooser easier for students. It uses a
- * JFileChooser to let the user pick a file and returns the chosen file name.
+ * A class to make working with a file chooser easier for students. It uses a JFileChooser to let
+ * the user pick a file and returns the chosen file name.
  * 
  * @author Barb Ericson ericson@cc.gatech.edu
  */
@@ -47,8 +47,8 @@ public class FileChooser
 		String path = null;
 
 		/*
-		 * create a JFrame to be the parent of the file chooser open dialog if
-		 * you don't do this then you may not see the dialog.
+		 * create a JFrame to be the parent of the file chooser open dialog if you don't do this then you
+		 * may not see the dialog.
 		 */
 		JFrame frame = new JFrame();
 		frame.setAlwaysOnTop(true);
@@ -63,8 +63,8 @@ public class FileChooser
 	}
 
 	/**
-	 * Method to let the user pick a file and return the full file name as a
-	 * string. If the user didn't pick a file then the file name will be null.
+	 * Method to let the user pick a file and return the full file name as a string. If the user didn't
+	 * pick a file then the file name will be null.
 	 * 
 	 * @return the full file name of the picked file or null
 	 */
@@ -79,8 +79,8 @@ public class FileChooser
 		String mediaDir = getMediaDirectory();
 
 		/*
-		 * create a file for this and check that the directory exists and if it
-		 * does set the file chooser to use it
+		 * create a file for this and check that the directory exists and if it does set the file chooser to
+		 * use it
 		 */
 		try
 		{

@@ -31,7 +31,7 @@ public class IntArrayWorker
 				total = total + matrix[row][col];
 			}
 		}
-		
+
 		return total;
 	}
 
@@ -50,7 +50,7 @@ public class IntArrayWorker
 				total = total + item;
 			}
 		}
-		
+
 		return total;
 	}
 
@@ -82,42 +82,41 @@ public class IntArrayWorker
 			{
 				System.out.print(matrix[row][col] + " ");
 			}
-			
+
 			System.out.println();
 		}
-		
+
 		System.out.println();
 	}
 
-	/** 
-   * fill the array with a pattern
-   */
-  public void fillPattern1()
-  {
-    for (int row = 0; row < matrix.length; row++)
-    {
-      for (int col = 0; col < matrix[0].length; 
-           col++)
-      {
-        if (row < col)
-          matrix[row][col] = 1;
-        else if (row == col)
-          matrix[row][col] = 2;
-        else
-          matrix[row][col] = 3;
-      }
-    }
-  }
+	/**
+	 * fill the array with a pattern
+	 */
+	public void fillPattern1()
+	{
+		for (int row = 0; row < matrix.length; row++)
+		{
+			for (int col = 0; col < matrix[0].length; col++)
+			{
+				if (row < col)
+					matrix[row][col] = 1;
+				else if (row == col)
+					matrix[row][col] = 2;
+				else
+					matrix[row][col] = 3;
+			}
+		}
+	}
 
 	public int getColTotal(int colum)
-  {
-	  int total = 0;
-	  
-	  for (int row = 0; row > matrix.length; row++)
-	  {
-		  
-	  }
-	  
-	  return total;
-  }
+	{
+		int total = 0;
+
+		for (int row = 0; row > matrix.length; row++)
+		{
+
+		}
+
+		return total;
+	}
 }

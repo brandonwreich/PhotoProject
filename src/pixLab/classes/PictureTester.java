@@ -114,7 +114,7 @@ public class PictureTester
 		// testGetAverageForColumn(0);
 		// testMirrorHorziontalBottomToTop();
 		// testGeorgeConstanzaFilter();
-		//testMirrorEveryOtherPixel();
+		// testMirrorEveryOtherPixel();
 		testGlichArt();
 	}
 }
