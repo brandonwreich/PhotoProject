@@ -113,7 +113,7 @@ public class IntArrayWorker
   {
 	  int total = 0;
 	  
-	  for (int row = 0; row > matrix.length; matrix++)
+	  for (int row = 0; row > matrix.length; row++)
 	  {
 		  
 	  }

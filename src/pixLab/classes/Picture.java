@@ -112,6 +112,7 @@ public class Picture extends SimplePicture
 	 */
 	public void mirrorVertical()
 	{
+		// Initialize data members
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
@@ -133,6 +134,7 @@ public class Picture extends SimplePicture
 
 	public void mirrorHorzontalBottomToTop()
 	{
+		// Initialize data members
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel bottomPixel = null;
 		Pixel topPixel = null;
@@ -155,6 +157,7 @@ public class Picture extends SimplePicture
 	/** Mirror just part of a picture of a temple */
 	public void mirrorTemple()
 	{
+		// Initialize data members
 		int mirrorPoint = 276;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
@@ -168,6 +171,8 @@ public class Picture extends SimplePicture
 			// Loop from col 13 to just before the mirror point
 			for (int col = 13; col < mirrorPoint; col++)
 			{
+				// Changes the color of the right pixel
+				// to the color of the left pixel
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
 				rightPixel.setColor(leftPixel.getColor());
@@ -175,8 +180,9 @@ public class Picture extends SimplePicture
 		}
 	}
 
-	public void mirrorEveryOtherPixel(String horizOrVert, String leftOrRight, double pixelGap)
+	public void mirrorEveryOtherPixel(String horizOrVert, double pixelGap)
 	{
+		// Initialize data members
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
@@ -197,10 +203,13 @@ public class Picture extends SimplePicture
 					{
 						if (col % pixelGap == 0)
 						{
-							if (leftOrRight.equalsIgnoreCase("left))
-							// Changes the right pixel to the left pixel
 							leftPixel = pixels[row][col];
 							rightPixel = pixels[row][width - 1 - col];
+
+							// Changes the left pixel to the right pixel
+							// leftPixel.setColor(rightPixel.getColor());
+
+							// Changes the right pixel to the left
 							rightPixel.setColor(leftPixel.getColor());
 						}
 					}
@@ -327,6 +336,34 @@ public class Picture extends SimplePicture
 					leftPixel.setColor(Color.BLACK);
 				else
 					leftPixel.setColor(Color.WHITE);
+			}
+		}
+	}
+
+	public void glitchArt()
+	{
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel midPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		int width = pixels[0].length;
+		int shiftAmount = (int) (.4 * pixels[0].length);
+
+		for (int row = 0; row < pixels.length; row++)
+		{
+			for (int col = 0; col < width; col++)
+			{
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][(col - shiftAmount)];
+				midPixel = pixels[row][(col + shiftAmount) % width];
+				
+				Color leftColor = leftPixel.getColor();
+				Color rightColor = rightPixel.getColor();
+				Color midColor = midPixel.getColor();
+				
+				leftPixel.setColor(rightColor);
+				rightPixel.setColor(midColor);
+				midPixel.setColor(leftColor);
 			}
 		}
 	}
