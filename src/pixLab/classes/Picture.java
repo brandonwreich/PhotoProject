@@ -134,7 +134,7 @@ public class Picture extends SimplePicture
 
 	public void mirrorHorzontalBottomToTop()
 	{
-		// Initialize data members
+		/* Initialize data members */
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel bottomPixel = null;
 		Pixel topPixel = null;
@@ -161,7 +161,6 @@ public class Picture extends SimplePicture
 		int mirrorPoint = 276;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
-
 		int count = 0;
 		Pixel[][] pixels = this.getPixels2D();
 
@@ -342,29 +341,89 @@ public class Picture extends SimplePicture
 
 	public void glitchArt()
 	{
+		Pixel[][] pixels = this.getPixels2D();
+		int shiftAmount = (int) (.40 * pixels[0].length);
+		int width = pixels[0].length;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
-		Pixel midPixel = null;
-		Pixel[][] pixels = this.getPixels2D();
-		int width = pixels[0].length;
-		int shiftAmount = (int) (.4 * pixels[0].length);
 
 		for (int row = 0; row < pixels.length; row++)
 		{
-			for (int col = 0; col < width; col++)
+			Color[] currentColors = new Color[pixels[0].length];
+
+			for (int col = 0; col < pixels[row].length; col++)
+			{
+				currentColors[col] = pixels[row][col].getColor();
+			}
+
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				pixels[row][col].setColor(currentColors[(col + shiftAmount) % width]);
+			}
+		}
+	}
+
+	public void classFilter()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int width = pixels[0].length;
+
+		for (int row = 141; row < 181; row++)
+		{
+			for (int col = 402; col < 442; col++)
 			{
 				leftPixel = pixels[row][col];
-				rightPixel = pixels[row][(width - shiftAmount + col) % width];
-				midPixel = pixels[row][(col + shiftAmount) % width];
-
-				Color leftColor = leftPixel.getColor();
-				Color rightColor = rightPixel.getColor();
-				Color midColor = midPixel.getColor();
-
-				leftPixel.setColor(rightColor);
-				rightPixel.setColor(midColor);
-				midPixel.setColor(leftColor);
+				rightPixel = pixels[row][width - 1 - col];
+				rightPixel.setColor(leftPixel.getColor());
 			}
+		}
+
+		addMessage("Look it's Bob Ross", 41, 120);
+		bobRossFace(100, 300);
+
+		write("BrandonReichClassFilter");
+	}
+
+	public void addMessage(String message, int xPos, int yPos)
+	{
+		Graphics2D graphics = getBufferedImage().createGraphics();
+		graphics.setPaint(Color.blue);
+		graphics.setFont(new Font("Helvetica", Font.BOLD, 25));
+		graphics.drawString(message, xPos, yPos);
+	}
+
+	public void bobRossFace(int startRow, int startCol)
+	{
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Picture bob = new Picture("BobRoss.png");
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = bob.getPixels2D();
+
+		int fromRow = 0;
+
+		for (int toRow = startRow; toRow < toPixels.length && fromRow < fromPixels.length; toRow++)
+		{
+			int fromCol = 0;
+
+			for (int toCol = startCol; toCol < toPixels[0].length && fromCol < fromPixels[0].length; toCol++)
+			{
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+
+				if (!fromPixel.isTransparent())
+				{
+					toPixel.setRed(fromPixel.getRed());
+					toPixel.setBlue(fromPixel.getBlue());
+					toPixel.setGreen(fromPixel.getGreen());
+				}
+
+				fromCol++;
+			}
+
+			fromRow++;
 		}
 	}
 

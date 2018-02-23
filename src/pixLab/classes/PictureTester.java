@@ -81,6 +81,14 @@ public class PictureTester
 		arch.glitchArt();
 		arch.explore();
 	}
+	
+	public static void testClassFilter()
+	{
+		Picture blue = new Picture("blueMotorcycle.jpg");
+		blue.explore();
+		blue.classFilter();
+		blue.explore();
+	}
 
 	/**
 	 * Main method for testing. Every class can have a main method in Java
@@ -115,6 +123,7 @@ public class PictureTester
 		// testMirrorHorziontalBottomToTop();
 		// testGeorgeConstanzaFilter();
 		// testMirrorEveryOtherPixel();
-		testGlichArt();
+		// testGlichArt();
+		testClassFilter();
 	}
 }
