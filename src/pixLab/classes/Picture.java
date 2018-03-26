@@ -389,7 +389,7 @@ public class Picture extends SimplePicture
 	public void addMessage(String message, int xPos, int yPos)
 	{
 		Graphics2D graphics = getBufferedImage().createGraphics();
-		graphics.setPaint(Color.blue);
+		graphics.setPaint(Color.pink);
 		graphics.setFont(new Font("Helvetica", Font.BOLD, 25));
 		graphics.drawString(message, xPos, yPos);
 	}
